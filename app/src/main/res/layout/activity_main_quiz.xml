@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:padding="16dp"
     tools:context=".MainQuiz">
+
 
 
     <TextView
@@ -70,69 +70,73 @@
 
     <TextView
         android:id="@+id/text_view_question"
-        android:layout_width="wrap_content"
+        android:layout_width="372dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/radio_group"
+        android:layout_below="@+id/text_view_difficulty"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
+        android:freezesText="true"
         android:text="Here will be the questions Text\nHere will be the questions Text\nHere will be the questions Text"
-        android:layout_centerHorizontal="true"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:freezesText="true"
-        />
+        android:textSize="20sp" />
 
 
-
-    <RadioGroup
-        android:id="@+id/radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
-
-        <RadioButton
-            android:id="@+id/radio_button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option 1"
-            android:freezesText="true"
-            />
-
-        <RadioButton
-            android:id="@+id/radio_button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option 2"
-            android:freezesText="true"
-            />
-
-        <RadioButton
-            android:id="@+id/radio_button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option 3"
-            android:freezesText="true" />
-
-        <RadioButton
-            android:id="@+id/radio_button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option 4"
-            android:freezesText="true" />
-
-
-    </RadioGroup>
-
-
-
-    <Button
-        android:id="@+id/button_confirm_next"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/radio_group"
-        android:layout_marginTop="16dp"
-        android:text="Confirm"
-        android:freezesText="true"
-        />
+        android:layout_height="323dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="6dp">
+
+
+        <Button
+            android:id="@+id/btn_opt_1"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="24dp"
+            android:freezesText="true"
+            android:text="option 1" />
+
+        <Button
+            android:id="@+id/btn_opt_2"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="210dp"
+            android:layout_marginTop="24dp"
+            android:freezesText="true"
+            android:text="option 2" />
+
+        <Button
+            android:id="@+id/btn_opt_3"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="170dp"
+            android:freezesText="true"
+            android:text="option 3
+" />
+
+        <Button
+            android:id="@+id/btn_opt_4"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="210dp"
+            android:layout_marginTop="170dp"
+            android:freezesText="true"
+            android:text="option 4" />
+
+    </RelativeLayout>
 
 
 </RelativeLayout>
+

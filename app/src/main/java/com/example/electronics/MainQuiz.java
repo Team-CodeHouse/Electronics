@@ -8,7 +8,9 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -65,7 +67,7 @@ public class MainQuiz extends AppCompatActivity {
 
     private int score;
     private boolean answered;
-
+    //private RadioButton buttonOptions;
 
 
     @Override
@@ -79,16 +81,23 @@ public class MainQuiz extends AppCompatActivity {
         textViewCategory = findViewById(R.id.text_view_category);
         textViewDifficulty = findViewById(R.id.text_view_difficulty);
         textViewCountdown = findViewById(R.id.text_view_countdown);
-        rbGroup = findViewById(R.id.radio_group);
+        /*rbGroup = findViewById(R.id.radio_group);
         rb1 = findViewById(R.id.radio_button1);
         rb2 = findViewById(R.id.radio_button2);
         rb3 = findViewById(R.id.radio_button3);
-        rb4 = findViewById(R.id.radio_button4);
+        rb4 = findViewById(R.id.radio_button4);*/
 
-        buttonConfirmNext = findViewById(R.id.button_confirm_next);
+        choice1 = findViewById(R.id.btn_opt_1);
+        choice2 = findViewById(R.id.btn_opt_2);
+        choice3 = findViewById(R.id.btn_opt_3);
+        choice4 = findViewById(R.id.btn_opt_4);
 
 
-        textColorDefaultRb = rb1.getTextColors();
+        //buttonConfirmNext = findViewById(R.id.button_confirm_next);
+
+
+        //textColorDefaultRb = rb1.getTextColors();
+        textColorDefaultRb = choice1.getTextColors();
         textColorDefaultCd = textViewCountdown.getTextColors();
 
         Intent intent = getIntent();
@@ -101,18 +110,10 @@ public class MainQuiz extends AppCompatActivity {
 
         if (savedInstanceState == null ) {
             QuizDbHelper dbHelper = QuizDbHelper.getInstance(this);
-            if ( categoryID == 4) {
-            questionList = dbHelper.getAllQuestions();
+            questionList = dbHelper.getQuestions(categoryID, difficulty);
             questionCountTotal = questionList.size();
             Collections.shuffle(questionList);
             showNextQuestion();
-            } else {
-                questionList = dbHelper.getQuestions(categoryID, difficulty);
-                questionCountTotal = questionList.size();
-                Collections.shuffle(questionList);
-                showNextQuestion();
-            }
-
         } else {
             questionList = savedInstanceState.getParcelableArrayList(KEY_QUESTION_List);
             questionCountTotal = questionList.size();
@@ -130,10 +131,61 @@ public class MainQuiz extends AppCompatActivity {
             }
         }
 
+        View view = new View(this);
+        RadioButton buttonOptions = view.findViewWithTag("option");
+        //Toast.makeText(MainQuiz.this, buttonOptions.toString(), Toast.LENGTH_SHORT).show();
+        choice1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!answered) {
+                        checkAnswer(1);
+                } else {
+                    showNextQuestion();
+
+                }
+
+            }
+        });
+
+        choice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!answered) {
+                        checkAnswer(2);
+                } else {
+                    showNextQuestion();
+                }
+
+            }
+        });
+
+        choice3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!answered) {
+                        checkAnswer(3);
+                } else {
+                    showNextQuestion();
+
+                }
+
+            }
+        });
+
+        choice4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!answered) {
+                        checkAnswer(4);
+                } else {
+                    showNextQuestion();
+                }
+
+            }
+        });
 
 
-
-        buttonConfirmNext.setOnClickListener(new View.OnClickListener() {
+        /*buttonConfirmNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!answered) {
@@ -148,32 +200,44 @@ public class MainQuiz extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
 
     }
 
         private void showNextQuestion(){
-            rb1.setTextColor(textColorDefaultRb);
+            /*rb1.setTextColor(textColorDefaultRb);
             rb2.setTextColor(textColorDefaultRb);
             rb3.setTextColor(textColorDefaultRb);
-            rb4.setTextColor(textColorDefaultRb);
+            rb4.setTextColor(textColorDefaultRb);*/
 
-            rbGroup.clearCheck();
+            choice1.setTextColor(textColorDefaultRb);
+            choice2.setTextColor(textColorDefaultRb);
+            choice3.setTextColor(textColorDefaultRb);
+            choice4.setTextColor(textColorDefaultRb);
+
+            //rbGroup.clearCheck();
 
             if (questionCounter < questionCountTotal) {
                 currentQuestion = questionList.get(questionCounter);
 
                 textViewquestion.setText(currentQuestion.getQuestion());
-                rb1.setText(currentQuestion.getOption1());
+                /*rb1.setText(currentQuestion.getOption1());
                 rb2.setText(currentQuestion.getOption2());
                 rb3.setText(currentQuestion.getOption3());
                 rb4.setText(currentQuestion.getOption4());
+*/
+                choice1.setText(currentQuestion.getOption1());
+                choice2.setText(currentQuestion.getOption2());
+                choice3.setText(currentQuestion.getOption3());
+                choice4.setText(currentQuestion.getOption4());
+
+
 
 
                 questionCounter++;
                 textViewQuestionCount.setText("Question: " + questionCounter + "/" + questionCountTotal);
                 answered = false;
-                buttonConfirmNext.setText("Confirm");
+                //buttonConfirmNext.setText("Confirm");
 
                 timeLeftInMillis = COUNTDOWN_IN_MILIS;
                 startCountDown();
@@ -195,7 +259,7 @@ public class MainQuiz extends AppCompatActivity {
                     public void onFinish() {
                         timeLeftInMillis = 0;
                         updateCountDownText();
-                        checkAnswer();
+                        checkAnswer(0);
                     }
                 }.start();
             }
@@ -218,45 +282,67 @@ public class MainQuiz extends AppCompatActivity {
             }
 
 
-            private void checkAnswer() {
-            answered = true;
+            private void checkAnswer(int i) {
+                answered = true;
 
-            countDownTimer.cancel();
+                countDownTimer.cancel();
 
-            RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
-            int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
+                //RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId())
+                    // int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
+                int answerNr = i;
+                if (answerNr == currentQuestion.getAnswerNr()) {
+                    score++;
+                    textViewScore.setText("Score: " + score);
+                }
 
-            if (answerNr == currentQuestion.getAnswerNr()) {
-                score++;
-                textViewScore.setText("Score: " + score);
-            }
+                showSolution();
 
-            showSolution();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Do something after 5s = 5000ms
+                        showNextQuestion();
+                    }
+                }, 3000);
 
             }
 
             private void showSolution(){
-                rb1.setTextColor(Color.RED);
+                /*rb1.setTextColor(Color.RED);
                 rb2.setTextColor(Color.RED);
                 rb3.setTextColor(Color.RED);
-                rb4.setTextColor(Color.RED);
+                rb4.setTextColor(Color.RED);*/
+
+                choice1.setTextColor(Color.RED);
+                choice2.setTextColor(Color.RED);
+                choice3.setTextColor(Color.RED);
+                choice4.setTextColor(Color.RED);
 
 
                 switch (currentQuestion.getAnswerNr()) {
                     case 1:
-                        rb1.setTextColor(Color.GREEN);
+                        //rb1.setTextColor(Color.GREEN);
+                        choice1.setTextColor(Color.GREEN);
+
                         textViewquestion.setText("Answer 1 is Correct");
                         break;
                     case 2:
-                        rb2.setTextColor(Color.GREEN);
+                        //rb2.setTextColor(Color.GREEN);
+                        choice2.setTextColor(Color.GREEN);
+
                         textViewquestion.setText("Answer 2 is Correct");
                         break;
                     case 3:
-                        rb3.setTextColor(Color.GREEN);
+                        //rb3.setTextColor(Color.GREEN);
+                        choice3.setTextColor(Color.GREEN);
+
                         textViewquestion.setText("Answer 3 is Correct");
                         break;
                     case 4:
-                        rb4.setTextColor(Color.GREEN);
+                        //rb4.setTextColor(Color.GREEN);
+                        choice4.setTextColor(Color.GREEN);
+
                         textViewquestion.setText("Answer 3 is Correct");
                         break;
 
@@ -265,9 +351,9 @@ public class MainQuiz extends AppCompatActivity {
                 }
 
                 if (questionCounter < questionCountTotal) {
-                    buttonConfirmNext.setText("Next");
+                    //buttonConfirmNext.setText("Next");
                 }else {
-                    buttonConfirmNext.setText("Finish");
+                    //buttonConfirmNext.setText("Finish");
                 }
 
 
