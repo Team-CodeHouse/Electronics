@@ -110,10 +110,18 @@ public class MainQuiz extends AppCompatActivity {
 
         if (savedInstanceState == null ) {
             QuizDbHelper dbHelper = QuizDbHelper.getInstance(this);
-            questionList = dbHelper.getQuestions(categoryID, difficulty);
-            questionCountTotal = questionList.size();
-            Collections.shuffle(questionList);
-            showNextQuestion();
+            if ( categoryID == 4) {
+                questionList = dbHelper.getAllQuestions();
+                questionCountTotal = questionList.size();
+                Collections.shuffle(questionList);
+                showNextQuestion();
+            } else {
+                questionList = dbHelper.getQuestions(categoryID, difficulty);
+                questionCountTotal = questionList.size();
+                Collections.shuffle(questionList);
+                showNextQuestion();
+            }
+
         } else {
             questionList = savedInstanceState.getParcelableArrayList(KEY_QUESTION_List);
             questionCountTotal = questionList.size();
