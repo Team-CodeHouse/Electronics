@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SelectCategories"
-            android:label="@string/title_activity_select_categories"
+            android:label="Electronics"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

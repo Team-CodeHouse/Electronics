@@ -22,7 +22,7 @@ public class SelectCategories extends AppCompatActivity {
         setContentView(R.layout.activity_select_categories);
 
 
-        button = findViewById(R.id.startquiz);
+        button = findViewById(R.id.gotoquiz);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
