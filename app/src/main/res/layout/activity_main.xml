@@ -33,12 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonquiz"
-        android:layout_alignStart="@+id/buttonquiz"
         android:layout_marginTop="10dp"
         android:text="Category:"
         android:textColor="@android:color/background_light"
         android:textSize="10sp"
-        android:layout_alignLeft="@+id/buttonquiz" />
+        android:layout_alignStart="@+id/text_view_highscore"
+        android:layout_alignLeft="@+id/text_view_highscore" />
 
 
     <Spinner
@@ -46,9 +46,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_alignStart="@+id/buttonquiz"
         android:layout_below="@+id/display_text_category"
-        android:layout_alignLeft="@+id/buttonquiz" />
+        android:layout_alignStart="@+id/text_view_highscore"
+        android:layout_alignLeft="@+id/text_view_highscore" />
 
 
     <TextView
@@ -56,12 +56,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner_category"
-        android:layout_alignStart="@+id/buttonquiz"
         android:layout_marginTop="10dp"
         android:text="Difficulty"
         android:textColor="@android:color/background_light"
         android:textSize="10sp"
-        android:layout_alignLeft="@+id/buttonquiz" />
+        android:layout_alignStart="@+id/text_view_highscore"
+        android:layout_alignLeft="@+id/text_view_highscore" />
 
 
     <Spinner
@@ -69,8 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_alignStart="@+id/buttonquiz"
         android:layout_below="@+id/display_text_difficulty"
-        android:layout_alignLeft="@+id/buttonquiz" />
+        android:layout_alignStart="@+id/text_view_highscore"
+        android:layout_alignLeft="@+id/text_view_highscore" />
 
 </RelativeLayout>
