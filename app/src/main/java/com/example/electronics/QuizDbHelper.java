@@ -219,10 +219,10 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         return categoryList;
     }
 
-    public ArrayList<Question> getAllQuestions() {
+    public ArrayList<Question> getAllQuestions(String i) {
         ArrayList<Question> questionList = new ArrayList<>();
         db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME, null);
+        Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME + " LIMIT " + i, null);
 
         if (c.moveToFirst()){
             do {

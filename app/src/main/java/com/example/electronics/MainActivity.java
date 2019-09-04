@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
     public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
+    public static final String EXTRA_NO_OF_QUESTION = "extraNoOfQuestion";
 
 
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Spinner spinnerCategory;
     private Spinner spinnerDifficulty;
+    private Spinner spinnerNoOfQuestion;
 
     private int highscore;
 
@@ -45,10 +47,12 @@ public class MainActivity extends AppCompatActivity {
         textViewHighscore = findViewById(R.id.text_view_highscore);
         spinnerCategory = findViewById(R.id.spinner_category);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
+        spinnerNoOfQuestion = findViewById(R.id.spinner_no_of_questions);
 
         loadCategories();
         loadDifficultyLevels();
         loadHighscore();
+        loadNoOfQuestion();
 
 
         button = findViewById(R.id.buttonquiz);
@@ -69,10 +73,12 @@ public class MainActivity extends AppCompatActivity {
         String categoryName = selectedCategory.getName();
 
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
+        String no_of_questions = spinnerNoOfQuestion.getSelectedItem().toString();
 
         Intent intent = new Intent(this, MainQuiz.class);
         intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
         intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
+        intent.putExtra(EXTRA_NO_OF_QUESTION, no_of_questions);
 
         intent.putExtra(EXTRA_DIFFICULTY, difficulty);
         startActivityForResult(intent, Request_Code_Quiz);
@@ -131,6 +137,19 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(KEY_HIGHSCORE, highscore);
         editor.apply();
+    }
+
+
+    private void loadNoOfQuestion() {
+        String[] noOfQuestion =  new String[] { "1", "2", "3" };
+
+        ArrayAdapter<String> adapterNoOfQuestion  = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, noOfQuestion);
+
+        adapterNoOfQuestion.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerNoOfQuestion.setAdapter(adapterNoOfQuestion);
+
     }
 }
 

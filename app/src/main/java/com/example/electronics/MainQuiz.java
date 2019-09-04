@@ -104,6 +104,7 @@ public class MainQuiz extends AppCompatActivity {
         int categoryID = intent.getIntExtra(MainActivity.EXTRA_CATEGORY_ID, 0);
         String categoryName = intent.getStringExtra(MainActivity.EXTRA_CATEGORY_NAME);
         String difficulty = intent.getStringExtra(MainActivity.EXTRA_DIFFICULTY);
+        String no_of_questions = intent.getStringExtra(MainActivity.EXTRA_NO_OF_QUESTION);
 
         textViewCategory.setText("Category: " + categoryName);
         textViewDifficulty.setText("Difficulty: " + difficulty);
@@ -111,7 +112,7 @@ public class MainQuiz extends AppCompatActivity {
         if (savedInstanceState == null ) {
             QuizDbHelper dbHelper = QuizDbHelper.getInstance(this);
             if ( categoryID == 4) {
-                questionList = dbHelper.getAllQuestions();
+                questionList = dbHelper.getAllQuestions(no_of_questions);
                 questionCountTotal = questionList.size();
                 Collections.shuffle(questionList);
                 showNextQuestion();

@@ -63,7 +63,6 @@
         android:layout_alignStart="@+id/text_view_highscore"
         android:layout_alignLeft="@+id/text_view_highscore" />
 
-
     <Spinner
         android:id="@+id/spinner_difficulty"
         android:layout_width="wrap_content"
@@ -72,5 +71,30 @@
         android:layout_below="@+id/display_text_difficulty"
         android:layout_alignStart="@+id/text_view_highscore"
         android:layout_alignLeft="@+id/text_view_highscore" />
+
+    <TextView
+        android:id="@+id/display_text_no_of_questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_difficulty"
+        android:layout_alignStart="@+id/text_view_highscore"
+        android:layout_alignLeft="@+id/text_view_highscore"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="10dp"
+        android:text="No. of Questions"
+        android:textColor="@android:color/background_light"
+        android:textSize="10sp" />
+
+    <Spinner
+        android:id="@+id/spinner_no_of_questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/display_text_no_of_questions"
+        android:layout_alignStart="@+id/text_view_highscore"
+        android:layout_alignLeft="@+id/text_view_highscore"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
