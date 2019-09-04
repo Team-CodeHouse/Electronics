@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@mipmap/electronics">
+    android:background="@color/cardview_dark_background">
 
 
 
@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
         android:text="HighScore: 0"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="30sp" />
 
     <Button
@@ -25,7 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Take a Quiz" />
+        android:text="Take a Quiz"
+        android:background="@drawable/custom_button_gotoquiz"/>
 
     <TextView
         android:id="@+id/display_text_category"
@@ -33,9 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonquiz"
         android:layout_alignStart="@+id/buttonquiz"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:text="Category:"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="10sp"
         android:layout_alignLeft="@+id/buttonquiz" />
 
@@ -56,9 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner_category"
         android:layout_alignStart="@+id/buttonquiz"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:text="Difficulty"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="10sp"
         android:layout_alignLeft="@+id/buttonquiz" />
 
