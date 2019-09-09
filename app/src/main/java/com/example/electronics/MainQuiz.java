@@ -70,10 +70,15 @@ public class MainQuiz extends AppCompatActivity {
     //private RadioButton buttonOptions;
 
 
+    private Handler handler;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_quiz);
+
+        handler = new Handler();
 
         textViewquestion = findViewById(R.id.text_view_question);
         textViewScore = findViewById(R.id.text_view_score);
@@ -219,6 +224,8 @@ public class MainQuiz extends AppCompatActivity {
             rb3.setTextColor(textColorDefaultRb);
             rb4.setTextColor(textColorDefaultRb);*/
 
+            handler.removeCallbacksAndMessages(null);
+
             choice1.setTextColor(textColorDefaultRb);
             choice2.setTextColor(textColorDefaultRb);
             choice3.setTextColor(textColorDefaultRb);
@@ -306,7 +313,8 @@ public class MainQuiz extends AppCompatActivity {
 
                 showSolution();
 
-                Handler handler = new Handler();
+
+                //Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -393,8 +401,7 @@ public class MainQuiz extends AppCompatActivity {
         outState.putBoolean(KEY_ANSWERED, answered );
         outState.putParcelableArrayList(KEY_QUESTION_List, questionList);
 
-
-
-
     }
+
+
 }
