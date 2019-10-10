@@ -13,6 +13,7 @@
         <activity
             android:name=".SelectCategories"
             android:label="Electronics"
+            android:screenOrientation="portrait"
          >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,10 +21,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainQuiz" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainQuiz"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
 
-        </activity>
+
     </application>
 
     <dist:module dist:instant="true" />

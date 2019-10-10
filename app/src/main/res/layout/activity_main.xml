@@ -97,4 +97,38 @@
         android:layout_marginLeft="0dp"
         android:layout_marginTop="10dp" />
 
+    <Button
+        android:id="@+id/buttonDiffficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_no_of_questions"
+        android:background="@drawable/custom_button_gotoquiz"
+        android:layout_marginTop="18dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonDiffficulty"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/custom_button_gotoquiz"
+        android:max="10"/>
+
+    <TextView
+        android:id="@+id/seekText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBar"
+        android:layout_alignStart="@+id/text_view_highscore"
+        android:layout_alignLeft="@+id/text_view_highscore"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="10dp"
+        android:text="No. of Questions"
+        android:textColor="@android:color/background_light"
+        android:textSize="10sp" />
+
+
 </RelativeLayout>

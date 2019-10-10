@@ -9,12 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Spinner;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static SeekBar seek_bar;
+    private static TextView seek_Text;
+
     private Button button;
     private static final int Request_Code_Quiz = 1;
 
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
         spinnerNoOfQuestion = findViewById(R.id.spinner_no_of_questions);
 
+
         loadCategories();
         loadDifficultyLevels();
         loadHighscore();
@@ -60,6 +66,37 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openMainQuiz();
+            }
+        });
+
+
+        seek_bar =  findViewById(R.id.seekBar);
+        seek_Text = findViewById(R.id.seekText);
+
+        seek_bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progress = 0;
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+                progress = progresValue;
+
+                seek_Text.setText(progress + "/" + seekBar.getMax());
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Do something here, if you want to do anything at the start of
+                // touching the seekbar
+
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Display the value in textview
+                seek_Text.setText(progress + "/" + seekBar.getMax());
+
             }
         });
 
@@ -151,6 +188,12 @@ public class MainActivity extends AppCompatActivity {
         spinnerNoOfQuestion.setAdapter(adapterNoOfQuestion);
 
     }
+
+
+
+
+
+
 }
 
 
