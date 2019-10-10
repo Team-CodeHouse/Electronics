@@ -111,6 +111,9 @@ public class MainQuiz extends AppCompatActivity {
         String difficulty = intent.getStringExtra(MainActivity.EXTRA_DIFFICULTY);
         String no_of_questions = intent.getStringExtra(MainActivity.EXTRA_NO_OF_QUESTION);
 
+
+
+
         textViewCategory.setText("Category: " + categoryName);
         textViewDifficulty.setText("Difficulty: " + difficulty);
 

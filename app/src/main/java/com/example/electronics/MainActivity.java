@@ -111,11 +111,14 @@ public class MainActivity extends AppCompatActivity {
 
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
         String no_of_questions = spinnerNoOfQuestion.getSelectedItem().toString();
+        //String no_of_questions = seek_Text.getText().toString();
 
         Intent intent = new Intent(this, MainQuiz.class);
         intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
         intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
         intent.putExtra(EXTRA_NO_OF_QUESTION, no_of_questions);
+
+
 
         intent.putExtra(EXTRA_DIFFICULTY, difficulty);
         startActivityForResult(intent, Request_Code_Quiz);
