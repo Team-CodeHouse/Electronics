@@ -70,7 +70,7 @@ public class MainQuiz extends AppCompatActivity {
     //private RadioButton buttonOptions;
 
 
-    private Handler handler; 
+    private Handler handler;
 
 
     @Override
