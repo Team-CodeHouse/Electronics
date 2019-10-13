@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
         //String no_of_questions = spinnerNoOfQuestion.getSelectedItem().toString();
+
         String no_of_questions = Integer.toString(seek_bar.getProgress());
 
         Intent intent = new Intent(this, MainQuiz.class);
